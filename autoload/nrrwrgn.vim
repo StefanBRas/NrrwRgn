@@ -1101,6 +1101,12 @@ fun! nrrwrgn#NrrwRgnDoMulti(...) abort "{{{1
 	call <sid>SetupBufLocalMaps(bang)
 	call <sid>NrrwRgnAuCmd(0)
 	call <sid>SetOptions(local_options)
+	if has_key(s:nrrw_aucmd, "create")
+		exe s:nrrw_aucmd["create"]
+	endif
+	if has_key(s:nrrw_aucmd, "close")
+		let b:nrrw_aucmd_close = s:nrrw_aucmd["close"]
+	endif
 	call <sid>CleanRegions()
 	call <sid>HideNrrwRgnLines()
 
